@@ -42,6 +42,12 @@ public interface OrderedDictionary<K, V> {
 	/** Returns an iterator containing all the entries in the dictionary. */
 	public Iterable<Entry<K, V>> entries();
 	
+	/**Find range in ordered diccionaries. */ 
+	public Iterable<Entry<K, V>> findRange (K minkey, K maxkey) 
+	throws InvalidKeyException;
+	
+	public Iterable<Entry<K,V>> autoComplete(String prefix);
+	
 	
 }
 
