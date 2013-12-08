@@ -227,7 +227,12 @@ public class LinkedTree<E>
 		List<Position<E>> cosas = leafNodes (this.root);
 		return cosas;
 	}
-	
+	/**
+	 * Metodo recursivo, entra en cada uno de los nodos del arbol y en cada caso, va añadiendo
+	 * nodos hoja a una lista que será la que devolverá el algoritmo.
+	 * @param n
+	 * @return
+	 */
 	private List<Position<E>> leafNodes (TreeNode<E> n){
 		if(n.getChildren().isEmpty()){
 			List<Position<E>> base= new ArrayList<Position<E>>();
@@ -254,6 +259,13 @@ public class LinkedTree<E>
 		
 		return recorrer(1,this.root);
 	}
+	/**
+	 * Metodo recursivo que se mete en cada nodo a recorrerlo y devuelve en cada caso
+	 * el maximo de nodos, así para cada uno de los hijos que tenga siempre se quedará con el máximo.
+	 * @param nivel
+	 * @param node
+	 * @return
+	 */
 	private int recorrer(int nivel,TreeNode<E> node){
                 int lvl=0;
                 Iterable<TreeNode<E>> hijos = node.getChildren();
@@ -273,6 +285,11 @@ public class LinkedTree<E>
 	public int degree(){
 		return subDegree();
 	}
+	/**
+	 * Crea un Iterable de las posiciones para usar despues un for mejorador
+	 * y comprobar en cada nodo que tenga, el numero de hijos y escoge el máximo en cada caso
+	 * @return
+	 */
 	private int subDegree(){
 		int degree=0;
 		Iterable<Position<E>> iterable = this.positions();

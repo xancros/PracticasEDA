@@ -241,6 +241,8 @@ public class BinarySearchTree<E> {
 		int compareToMax;
 		E element;
 		List<Position<E>>positions=new ArrayList<Position<E>>();
+		//en el bucle para buscar el rango en todos los elementos se usa el comparador que devuelve -1 si es menor
+		//0 si es igual o 1 si es mayor
 		for(Position<E> posElement : values){
 			element=posElement.element();
 			compareToMin=this.comparator.compare(element, minRange);

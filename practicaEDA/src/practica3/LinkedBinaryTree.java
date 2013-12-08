@@ -437,10 +437,20 @@ public final class LinkedBinaryTree<E> implements BinaryTree<E> {
         	}
         	return level;
         }
+        
+        /**
+         * devuelve el nivel del arbol buscando un nodo con un backtracking binario
+         * si el nodo no es igual a la raiz y tiene mas elementos por la izquierda seguimos buscando
+         * si no entonces devolvemos el nivel
+         * 
+         * Lo mismo para el lado derecho
+         * @param level
+         * @param nodeToBeFound
+         * @param subRoot
+         * @return
+         */
         private int lvl (int level,BTNode<E> nodeToBeFound,BTNode<E> subRoot){
-            
-            
-            
+                
             for(int k=0;k<2;k++){
             
                     if(k==0){
@@ -469,6 +479,7 @@ public final class LinkedBinaryTree<E> implements BinaryTree<E> {
             mostrarNodo(tree.root);
             
         }
+        
         private void mostrarNodo(BTNode<E> node){
           
             if(node!=null){

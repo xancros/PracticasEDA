@@ -39,7 +39,12 @@ public class parseoWeb<E> {
     private int nContenido;
     private int nivelNodal=0;
     private final LinkedTree<E> arbolWeb;
-
+    /**
+     * Constructor de la clase que genera el arbol y se inicia el menu
+     * @param url
+     * @throws MalformedURLException
+     * @throws IOException
+     */
     public parseoWeb(String url) throws MalformedURLException, IOException {
         oracle = new URL(url);
         h1 = null;
@@ -60,7 +65,7 @@ public class parseoWeb<E> {
         menu();
     }
 	/**
-	*Invokes a menu to control the web Tree
+	*Es un bucle que genera el menu y cotniene las distintas llamadas a los metodos
 	*
 	*/
     private void menu() {
@@ -127,6 +132,12 @@ public class parseoWeb<E> {
 	/**
 	* parsing a web reference and creates a new Linked Tree
 	* with the web headers as the nodes of the tree
+	* 
+	* lee desde la pagina web, y en cada caso siendo el titulo quita el codigo html y se queda solo con el texto
+	* y añade el titulo a la raiz
+	* 
+	* en las distintas cabeceras (h1..h7) se van añadiendo y se actualiza los atributos de las cabeceras,
+	* para ir asociando cada cabecera debajo de cada punto.
 	*/
 	private void generarArbol() throws IOException {
 
@@ -264,7 +275,11 @@ public class parseoWeb<E> {
         String noHTMLString = htmlString.replaceAll("\\<.*?\\>", "");
         return noHTMLString;
     }
-
+    /**
+     * Metodo privado que permite buscar el texto del numero del objeto en el arbol
+     * @param h
+     * @return
+     */
     private Position<E> buscar(String h) {
         encontrado = false;
         Iterator<Position<E>> it = arbolWeb.positions().iterator();
@@ -280,7 +295,11 @@ public class parseoWeb<E> {
         return pos;
 
     }
-
+    /**
+     * Muestra el arbol en modo texto
+     * @param node
+     * @param nivel
+     */
     private void mostrarArbol(TreeNode<E> node,int nivel) {
         
         for(int i=0;i<nivel; i++){
@@ -294,7 +313,11 @@ public class parseoWeb<E> {
             mostrarArbol(n,nivel+1);
         }
     }
-
+    /**
+     * metodo interno que se llama desde el menu para añadir un nuevo nodo al arbol
+     * @param p
+     * @param name
+     */
     private void addNode(Position<E> p,String name){
         TreeNode<E> node = arbolWeb.checkPosition(p);
         recorrer(1,arbolWeb.root,node);
@@ -310,6 +333,12 @@ public class parseoWeb<E> {
         
         System.out.println("The Node has been created");
     }
+    /**
+     * Metodo auxiliar para buscar elementos en el arbol
+     * @param nivel
+     * @param node
+     * @param bus
+     */
     private void recorrer(int nivel,TreeNode<E> node,TreeNode<E> bus){
                 
                 Iterable<TreeNode<E>> nodes=node.getChildren();
@@ -326,6 +355,12 @@ public class parseoWeb<E> {
                 
                 
 	}
+    /**
+     * metodo auxiliar para añadir nuevos nodos en el arbol
+     * @param parent
+     * @param pos
+     * @param con
+     */
     private void addNodePos(Position<E> parent,int pos,String con){
         boolean empty=arbolWeb.checkPosition(parent).getChildren().isEmpty();
         if(arbolWeb.checkPosition(parent).getChildren().isEmpty()){
@@ -339,6 +374,11 @@ public class parseoWeb<E> {
             arbolWeb.size=size;
         }
     }
+    /**
+     * Metodo que sirve para borrar un nodo dado segun el texto que se da desde la cabecera primer lo busca
+     * despues si lo ha encontrado lo borra.
+     * @param item
+     */
     private void borrar(String item){
         Position<E> p = buscar(item);
             if(p!=null){
@@ -348,6 +388,13 @@ public class parseoWeb<E> {
                 System.out.println("No se encuentra");
             }
     }
+    /**
+     * Busca primero el nodo, y cuando lo encuentra se obtiene su padre, se cambian los punteros y se establece el nodo
+     * con el orden dado en el sitio correcto.
+     * @param item
+     * @param nextParent
+     * @param orden
+     */
     private void mover(String item,String nextParent,String orden){
         Position<E> nodeMove = buscar(item);
             if(nodeMove!=null){

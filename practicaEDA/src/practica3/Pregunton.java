@@ -11,7 +11,10 @@ public class Pregunton {
 	 */
 	private Position<String> pos;
 	
-	
+	/**
+	 * constructor, crea un arbol binario vacio y empieza el juego
+	 * 
+	 */
 	public Pregunton(){
 		LinkedBinaryTree<String> mente = new LinkedBinaryTree<String>();
 		Scanner scan = new Scanner(System.in);
@@ -38,10 +41,21 @@ public class Pregunton {
 			
 		}while(!decision.equalsIgnoreCase("salir"));
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new Pregunton();
 	}
+	/**
+	 * Recorre el arbol actualizando y haciendo las llamadas oportunas en cada caso, después de hacer esto
+	 * devuelve un puntero al arbol actualizado despues de hacer los cambios.
+	 * 
+	 * @param mente
+	 * @param objeto
+	 * @param scan
+	 * @param solucion
+	 * @return
+	 */
 	private LinkedBinaryTree<String> preguntarRecorriendoArbol(LinkedBinaryTree<String> mente,String objeto,Scanner scan,String solucion){
 		
 		if (mente.size() - 1 == 0) {
@@ -115,7 +129,7 @@ public class Pregunton {
 			return tree;
 	}
 	/**
-	 * Devuelve si ha habido exito en las preguntas internas
+	 * Devuelve si hay exito en las preguntas internas
 	 * @param node
 	 * @param scan
 	 * @return
