@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-
 /** A hash table with linear probing and the MAD hash function */
 /**
  * A hash table data structure that uses linear probing to handle collisions.
