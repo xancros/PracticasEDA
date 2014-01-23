@@ -224,7 +224,14 @@ public class LinkedTree<E>
 	*/
         //FUNCIONA
 	public Iterable<Position<E>> front(){
-		List<Position<E>> cosas = leafNodes (this.root);
+		//List<Position<E>> cosas = leafNodes (this.root);
+		List<Position<E>> cosas=new ArrayList<Position<E>>();
+		Iterable<Position<E>> pos=this.positions();
+		for(Position<E> p : pos){
+			TreeNode<E> node =this.checkPosition(p);
+			if(node.getChildren().size()==0)
+				cosas.add(node);
+		}
 		return cosas;
 	}
 	/**
