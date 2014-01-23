@@ -1,34 +1,70 @@
 package practica3;
 
-import static org.junit.Assert.*;
+
+import practica3.LinkedBinaryTree;
+import static org.junit.Assert.assertEquals;
+
 
 import org.junit.Test;
-
 import practica2.Position;
 
 public class LinkedBinaryTreeTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testSize() {
+		LinkedBinaryTree <String> t = new LinkedBinaryTree <String>();
+		Position <String> p = t.addRoot("+");
+		t.insertLeft(p, "2");
+		Position <String> h = t.insertRight(p, "*");
+		t.insertLeft(h,"3");
+		t.insertRight(h,"5");
+		assertEquals(t.size(), 5);
 	}
+
 	@Test
-	public void levelTest (){
-		LinkedBinaryTree<Integer> tree = new LinkedBinaryTree<Integer>();
-		Position<Integer> root=tree.addRoot(12);
-		Position<Integer> pos1=tree.insertLeft(root, 1);
-		Position<Integer> pos2=tree.insertRight(root, 2);
-		Position<Integer> pos11 = tree.insertLeft(pos1, 22);
-		assertEquals(2,tree.level(pos11));
+	public void testIsEmpty() {
+		LinkedBinaryTree <String> t = new LinkedBinaryTree <String>();
+		assertEquals(t.isEmpty(), true);
 	}
+
 	@Test
-	public void lvlNodeTest(){
-		LinkedBinaryTree<Integer> tree = new LinkedBinaryTree<Integer>();
-		Position<Integer> root=tree.addRoot(12);
-		Position<Integer> pos1=tree.insertLeft(root, 1);
-		Position<Integer> pos2=tree.insertRight(root, 2);
-		Position<Integer> pos11 = tree.insertLeft(pos1, 22);
-		assertEquals(2,tree.lvlAux(pos11));
+	public void testPositions() {
+		LinkedBinaryTree <String> t = new LinkedBinaryTree <String>();
+		Position <String> p = t.addRoot("+");
+		t.insertLeft(p, "2");
+		t.insertRight(p, "3");
+		String salida = "";
+		for (Position <String> e : t.positions()) {
+			salida += e.element();
+		}
+		assertEquals(salida, "+23");
+	}
+
+	@Test
+	public void testRemove() {
+		LinkedBinaryTree <String> t = new LinkedBinaryTree <String>();
+		Position <String> p = t.addRoot("+");
+		Position <String> q = t.insertLeft(p, "2");
+		Position <String> h = t.insertRight(p, "*");
+		t.insertLeft(h,"3");
+		t.insertRight(h,"5");
+		t.remove(q);
+		assertEquals(t.size(), 4);
+		
+	}
+
+	@Test
+	public void testSwapElements() {
+		LinkedBinaryTree <String> t = new LinkedBinaryTree <String>();
+		Position <String> p = t.addRoot("+");
+		Position <String> p1 = t.insertLeft(p, "2");
+		Position <String> p2 = t.insertRight(p, "3");
+		t.swapElements(p1, p2);
+		String salida = "";
+		for (Position <String> e : t.positions()) {
+			salida += e.element();
+		}
+		assertEquals(salida, "+32");
 	}
 
 }
