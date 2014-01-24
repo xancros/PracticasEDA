@@ -18,7 +18,7 @@ public class Main {
 		tabla.put(1, "hola");
 		tabla.put(2, "adios");
 		*/
-		BufferedReader in;
+		/*BufferedReader in;
 		try {
 			//C:\Users\Aitor\Dropbox\workspace\practicaEDA\src\practica4\eess_GOA_30102013.csv
 			File archivo = new File("eess_GOA_30102013.csv");
@@ -33,10 +33,10 @@ public class Main {
 				float la;
 				while(linea!=null){
 					String[] a =linea.split(";");
-					System.out.println(a[0]+"  "+a[1]);
+					//System.out.println(a[0]+"  "+a[1]);
 					lo=Float.parseFloat(a[0]);
 					la=Float.parseFloat(a[1]);
-					//System.out.println(lo+"  "+la);
+					System.out.println(lo+"  "+la);
 					//System.out.println(linea);
 					linea=in.readLine();
 				}
@@ -50,7 +50,8 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
+		Rectangle a = new Rectangle();
 	}
 	
 }
