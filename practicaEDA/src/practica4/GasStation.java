@@ -16,8 +16,8 @@ public class GasStation {
 				latitud=lat;
 				longitud=lon;
 				descripcion=desc;
-				altura=latitud-Math.abs(virtualLat);
-				anchura=longitud+Math.abs(virtualLon);
+				altura=(latitud-Math.abs(virtualLat))/100;
+				anchura=(longitud+Math.abs(virtualLon))/100;
 			}
 			public String getDescription(){
 				return descripcion;

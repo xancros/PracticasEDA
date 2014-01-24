@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class HashTableMapSC<K, V> extends HashTableMap<K, V>{
 	
-	protected LinkedList<HashEntry<K, V>>[] bucket;// bucket array
+	private LinkedList<HashEntry<K, V>>[] bucket;// bucket array
 	
 	public HashTableMapSC() {
 		this(109345121, 1000); // reusing the constructor HashTableMap(int p, int cap)

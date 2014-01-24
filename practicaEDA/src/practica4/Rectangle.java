@@ -16,9 +16,11 @@ public class Rectangle{
 		private static final double LIM_MIN_LAT = 27.70533;
 		private static final double LIM_MAX_LAT = 43.7318;
 		
-		
+		private HashTableMapSC<Double,GasStation> mapa;
 		
 		public Rectangle(){
+			mapa= new HashTableMapSC<Double,GasStation>();
+			
 			BufferedReader in;
 			try {
 				
@@ -33,8 +35,8 @@ public class Rectangle{
 					while(linea!=null){
 						String[] a =linea.split(";");
 						GasStation gasolinera = new GasStation(Double.parseDouble(a[0]),Double.parseDouble(a[1]),a[2],LIM_MIN_LON,LIM_MIN_LAT);
-						System.out.println(gasolinera.getLongitud()+"  "+gasolinera.getLatitud());
-					
+						//System.out.println(gasolinera.getLongitud()+"  "+gasolinera.getLatitud());
+						mapa.put(gasolinera.getAnchura()*gasolinera.getAltura(), gasolinera);
 						linea=in.readLine();
 					}
 				}else
@@ -53,6 +55,9 @@ public class Rectangle{
 			/*
 			 * Una vez claro que tengas la tabla hash, hay que acceder con las coordenadas y coger esa lista y devolverla.
 			 */
+			double cordX = x/100;
+			double cordY = y/100;
+			
 			return null;
 		}
 		public	Iterable<GasStation>	serviceQuery(double	x,	double	y,	double rad){
