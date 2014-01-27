@@ -23,6 +23,9 @@ public class Main {
 		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
 		AVLTree<Integer> avltree = new AVLTree<Integer>();
 		RBTree<Integer> rbtree = new RBTree<Integer>();
+		insercionAleatoria(bst, avltree, rbtree);
+		consultaAleatoria(bst, avltree, rbtree);
+		
 		
 	}
 	public static void consultaOrdenada(BinarySearchTree<Integer> bst,AVLTree<Integer>avltree,RBTree<Integer>rbtree){
@@ -68,18 +71,18 @@ public class Main {
 		
 		for(int i=1;i<=1000;i++){
 			bst.insert((int)(Math.random()*1000)+1);
-			System.out.println("insercion "+ i+ " en "+ +System.currentTimeMillis());
+			//System.out.println("insercion "+ i+ " en "+ +System.currentTimeMillis());
 			
 		}
 		System.out.println("INSERCIONES EN AVL TREE");	
 		for(int i=1;i<=10000;i++){
 			avltree.insert((int)(Math.random()*10000)+1);
-			System.out.println("insercion "+ i+ " en "+ +System.currentTimeMillis());
+			//System.out.println("insercion "+ i+ " en "+ +System.currentTimeMillis());
 		}
 		System.out.println("INSERCIONES EN RED BLACK TREE");
 		for(int i=1;i<=100000;i++){
 			rbtree.insert((int)(Math.random()*100000)+1);
-			System.out.println("insercion "+ i+ " en "+ +System.currentTimeMillis());
+			//System.out.println("insercion "+ i+ " en "+ +System.currentTimeMillis());
 		}
 	}
 	public static void insercionOrdenada(BinarySearchTree<Integer> bst,AVLTree<Integer>avltree,RBTree<Integer>rbtree){
